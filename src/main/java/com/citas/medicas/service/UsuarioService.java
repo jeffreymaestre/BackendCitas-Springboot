@@ -1,6 +1,6 @@
 package com.citas.medicas.service;
 
-import com.citas.medicas.dao.IUsuarioDao;
+/*import com.citas.medicas.dao.IUsuarioDao;
 import com.citas.medicas.entity.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,3 +44,4 @@ public class UsuarioService implements UserDetailsService {
         return new User(usuario.getUsername(), usuario.getPassword(), usuario.getEnabled(), true, true, true, authorities);
     }
 }
+*/
