@@ -51,7 +51,7 @@ public class CitaRestControllers {
         citaService.delete(id);
     }
 
-    @PostMapping("/{id}/reservar")
+    /*@PostMapping("/{id}/reservar")
     public ResponseEntity<?> reservarCita(@PathVariable Long id){
         try {
             citaService.reservaCita(id);
@@ -59,6 +59,17 @@ public class CitaRestControllers {
         } catch (EntityNotFoundException e){
             return ResponseEntity.notFound().build();
         } catch (IllegalStateException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }*/
+
+    @PostMapping("/agendar")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<?> agendarCita(@RequestBody Cita cita){
+        try {
+            citaService.agendarCita(cita);
+            return ResponseEntity.ok("Cita agendada correctamente");
+        }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

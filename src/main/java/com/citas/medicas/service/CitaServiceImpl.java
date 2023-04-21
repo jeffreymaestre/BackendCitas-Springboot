@@ -39,7 +39,7 @@ public class CitaServiceImpl implements ICitaService{
         citaDao.deleteById(id);
     }
 
-    @Override
+   /* @Override
     @Transactional
     public void reservaCita(Long id) {
         Cita cita = citaDao.findById(id).orElseThrow(()-> new EntityNotFoundException("Cita no encontrada"));
@@ -47,6 +47,15 @@ public class CitaServiceImpl implements ICitaService{
             throw new IllegalStateException("La cita ya esta agendada");
         }
         cita.setReserva(true);
+        citaDao.save(cita);
+    }
+*/
+    @Override
+    @Transactional
+    public void agendarCita(Cita cita) throws Exception{
+        if (citaDao.existsByMedicoAndFechaHora(cita.getMedico(), cita.getFechaHora())){
+            throw new Exception("Ya existe una cita para el médico en la fecha y hora especificadas");
+        }
         citaDao.save(cita);
     }
 

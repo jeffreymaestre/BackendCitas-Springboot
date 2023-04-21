@@ -14,5 +14,7 @@ public interface ICitaService {
 
     public void delete (Long id);
 
-    public void reservaCita(Long id);
+    //public void reservaCita(Long id);
+
+    public void agendarCita(Cita cita) throws Exception;
 }

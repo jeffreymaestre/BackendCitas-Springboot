@@ -14,15 +14,15 @@ public class Cita {
     private String medico;
     private LocalDateTime fechaHora;
 
-    private boolean reserva;
+    //private boolean reserva;
 
-    public boolean isReserva() {
+   /* public boolean isReserva() {
         return reserva;
     }
 
     public void setReserva(boolean reserva) {
         this.reserva = reserva;
-    }
+    }*/
 
     public long getId() {
         return id;
