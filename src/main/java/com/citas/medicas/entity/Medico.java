@@ -1,23 +1,23 @@
 package com.citas.medicas.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="pacientes")
-public class Paciente implements Serializable {
-
+@Table(name = "medicos")
+public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String apellido;
-    private String email;
-
-    @OneToMany(mappedBy = "paciente")
+    private String especialidad;
+    @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
+    //@JsonIgnoreProperties("medico")
+    //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIgnore
     private List<Cita> citas;
 
@@ -45,12 +45,12 @@ public class Paciente implements Serializable {
         this.apellido = apellido;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEspecialidad() {
+        return especialidad;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
     }
 
     public List<Cita> getCitas() {

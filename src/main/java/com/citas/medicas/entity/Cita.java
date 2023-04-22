@@ -1,5 +1,6 @@
 package com.citas.medicas.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -10,8 +11,13 @@ public class Cita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String paciente;
-    private String medico;
+    @ManyToOne
+    @JoinColumn(name = "id_paciente")
+    private Paciente paciente;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_medico")
+    //@JsonIgnore
+    private Medico medico;
     private LocalDateTime fechaHora;
 
     //private boolean reserva;
@@ -32,19 +38,19 @@ public class Cita {
         this.id = id;
     }
 
-    public String getPaciente() {
+    public Paciente getPaciente() {
         return paciente;
     }
 
-    public void setPaciente(String paciente) {
+    public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
 
-    public String getMedico() {
+    public Medico getMedico() {
         return medico;
     }
 
-    public void setMedico(String medico) {
+    public void setMedico(Medico medico) {
         this.medico = medico;
     }
 
